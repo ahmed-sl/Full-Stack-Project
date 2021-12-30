@@ -47,14 +47,8 @@ class ViewController: UIViewController {
                     // Database is empty
                     ref.child("users").setValue(allUserDict)
                 }
-                
-                
-                
             }
-            
         }
-
-
     }
 
 

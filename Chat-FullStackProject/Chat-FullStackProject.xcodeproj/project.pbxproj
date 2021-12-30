@@ -18,6 +18,8 @@
 		006C0AE3277C8647005D7282 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 006C0AE2277C8647005D7282 /* FirebaseAuth */; };
 		006C0AE5277C8647005D7282 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 006C0AE4277C8647005D7282 /* FirebaseDatabase */; };
 		006C0AE7277C8647005D7282 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 006C0AE6277C8647005D7282 /* FirebaseStorage */; };
+		00D2B2DA277DCF29002C3ED4 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D2B2D9277DCF29002C3ED4 /* SignInVC.swift */; };
+		00D2B2DC277DCF41002C3ED4 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D2B2DB277DCF41002C3ED4 /* SignUp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		004BFF5B277C72B30057CD8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		004BFF5D277C72B30057CD8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		005C4FF8277C904500B1CCF4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		00D2B2D9277DCF29002C3ED4 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		00D2B2DB277DCF41002C3ED4 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,16 +70,42 @@
 		004BFF4E277C72B00057CD8C /* Chat-FullStackProject */ = {
 			isa = PBXGroup;
 			children = (
-				004BFF4F277C72B00057CD8C /* AppDelegate.swift */,
-				004BFF51277C72B00057CD8C /* SceneDelegate.swift */,
-				004BFF53277C72B00057CD8C /* ViewController.swift */,
-				004BFF55277C72B00057CD8C /* Main.storyboard */,
+				00D2B2D8277DCEC6002C3ED4 /* Screens */,
+				00D2B2D7277DCE77002C3ED4 /* Controlers */,
+				00D2B2D6277DCE29002C3ED4 /* ChatApp */,
 				004BFF58277C72B30057CD8C /* Assets.xcassets */,
-				004BFF5A277C72B30057CD8C /* LaunchScreen.storyboard */,
 				004BFF5D277C72B30057CD8C /* Info.plist */,
 				005C4FF8277C904500B1CCF4 /* GoogleService-Info.plist */,
 			);
 			path = "Chat-FullStackProject";
+			sourceTree = "<group>";
+		};
+		00D2B2D6277DCE29002C3ED4 /* ChatApp */ = {
+			isa = PBXGroup;
+			children = (
+				004BFF4F277C72B00057CD8C /* AppDelegate.swift */,
+				004BFF51277C72B00057CD8C /* SceneDelegate.swift */,
+			);
+			path = ChatApp;
+			sourceTree = "<group>";
+		};
+		00D2B2D7277DCE77002C3ED4 /* Controlers */ = {
+			isa = PBXGroup;
+			children = (
+				004BFF53277C72B00057CD8C /* ViewController.swift */,
+				00D2B2D9277DCF29002C3ED4 /* SignInVC.swift */,
+				00D2B2DB277DCF41002C3ED4 /* SignUp.swift */,
+			);
+			path = Controlers;
+			sourceTree = "<group>";
+		};
+		00D2B2D8277DCEC6002C3ED4 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				004BFF55277C72B00057CD8C /* Main.storyboard */,
+				004BFF5A277C72B30057CD8C /* LaunchScreen.storyboard */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,7 +191,9 @@
 			files = (
 				004BFF54277C72B00057CD8C /* ViewController.swift in Sources */,
 				004BFF50277C72B00057CD8C /* AppDelegate.swift in Sources */,
+				00D2B2DA277DCF29002C3ED4 /* SignInVC.swift in Sources */,
 				004BFF52277C72B00057CD8C /* SceneDelegate.swift in Sources */,
+				00D2B2DC277DCF41002C3ED4 /* SignUp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
