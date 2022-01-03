@@ -1,21 +1,22 @@
-//
-//  ViewController.swift
-//  Chat-FullStackProject
-//
-//  Created by Ahmed.sl on 25/05/1443 AH.
-//
 
 import UIKit
 import FirebaseDatabase
 
 class ViewController: UIViewController {
 
+    @IBAction func regstr(_ sender: UIBarButtonItem) {
+        let nav = storyboard?.instantiateViewController(withIdentifier: "SignUp") as! SignUp
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-            createUser(name: "Ashish", age: 30)
-            createUser(name: "Ahmed", age: 27)
-            createUser(name: "Pulkit", age: 30)
+//            createUser(name: "Ashish", age: 30)
+//            createUser(name: "Ahmed", age: 27)
+//            createUser(name: "Pulkit", age: 30)
+        
+        
         
         
     }
