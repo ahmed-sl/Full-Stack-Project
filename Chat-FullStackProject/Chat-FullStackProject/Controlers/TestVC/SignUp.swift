@@ -82,6 +82,8 @@ class SignUp: UIViewController {
         self.navigationController?.pushViewController(nav, animated: true)
         
         
+        
+        
     }
     
     @IBAction func openGallery(_ sender: UIButton) {

@@ -19,6 +19,13 @@
 		006C0AE5277C8647005D7282 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 006C0AE4277C8647005D7282 /* FirebaseDatabase */; };
 		006C0AE7277C8647005D7282 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 006C0AE6277C8647005D7282 /* FirebaseStorage */; };
 		00A5CC0A2782D70C007E478E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5CC092782D70B007E478E /* ProfileVC.swift */; };
+		00BECF872784264200B4694E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BECF862784264200B4694E /* LoginVC.swift */; };
+		00BECF892784266400B4694E /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BECF882784266400B4694E /* RegisterVC.swift */; };
+		00BECF8B278426B900B4694E /* PhotoViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BECF8A278426B900B4694E /* PhotoViewerVC.swift */; };
+		00BECF8D278426D800B4694E /* VideoPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BECF8C278426D800B4694E /* VideoPlayerVC.swift */; };
+		00BECF8F2784270500B4694E /* ConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BECF8E2784270500B4694E /* ConversationsVC.swift */; };
+		00BECF912784271800B4694E /* NewConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BECF902784271800B4694E /* NewConversationsVC.swift */; };
+		00BECF932784274B00B4694E /* ProfileUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BECF922784274B00B4694E /* ProfileUserVC.swift */; };
 		00D2B2DC277DCF41002C3ED4 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D2B2DB277DCF41002C3ED4 /* SignUp.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +40,13 @@
 		004BFF5D277C72B30057CD8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		005C4FF8277C904500B1CCF4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		00A5CC092782D70B007E478E /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		00BECF862784264200B4694E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		00BECF882784266400B4694E /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		00BECF8A278426B900B4694E /* PhotoViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerVC.swift; sourceTree = "<group>"; };
+		00BECF8C278426D800B4694E /* VideoPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerVC.swift; sourceTree = "<group>"; };
+		00BECF8E2784270500B4694E /* ConversationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsVC.swift; sourceTree = "<group>"; };
+		00BECF902784271800B4694E /* NewConversationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsVC.swift; sourceTree = "<group>"; };
+		00BECF922784274B00B4694E /* ProfileUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserVC.swift; sourceTree = "<group>"; };
 		00D2B2DB277DCF41002C3ED4 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +94,38 @@
 			path = "Chat-FullStackProject";
 			sourceTree = "<group>";
 		};
+		00A2AC9D278478B800EC7A93 /* TestVC */ = {
+			isa = PBXGroup;
+			children = (
+				004BFF53277C72B00057CD8C /* ViewController.swift */,
+				00D2B2DB277DCF41002C3ED4 /* SignUp.swift */,
+				00A5CC092782D70B007E478E /* ProfileVC.swift */,
+			);
+			path = TestVC;
+			sourceTree = "<group>";
+		};
+		00BECF85278425F400B4694E /* All Controlers */ = {
+			isa = PBXGroup;
+			children = (
+				00BECF952784283900B4694E /* Login-Regseter */,
+				00BECF8A278426B900B4694E /* PhotoViewerVC.swift */,
+				00BECF8C278426D800B4694E /* VideoPlayerVC.swift */,
+				00BECF8E2784270500B4694E /* ConversationsVC.swift */,
+				00BECF902784271800B4694E /* NewConversationsVC.swift */,
+				00BECF922784274B00B4694E /* ProfileUserVC.swift */,
+			);
+			path = "All Controlers";
+			sourceTree = "<group>";
+		};
+		00BECF952784283900B4694E /* Login-Regseter */ = {
+			isa = PBXGroup;
+			children = (
+				00BECF862784264200B4694E /* LoginVC.swift */,
+				00BECF882784266400B4694E /* RegisterVC.swift */,
+			);
+			path = "Login-Regseter";
+			sourceTree = "<group>";
+		};
 		00D2B2D6277DCE29002C3ED4 /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,9 +138,8 @@
 		00D2B2D7277DCE77002C3ED4 /* Controlers */ = {
 			isa = PBXGroup;
 			children = (
-				004BFF53277C72B00057CD8C /* ViewController.swift */,
-				00D2B2DB277DCF41002C3ED4 /* SignUp.swift */,
-				00A5CC092782D70B007E478E /* ProfileVC.swift */,
+				00BECF85278425F400B4694E /* All Controlers */,
+				00A2AC9D278478B800EC7A93 /* TestVC */,
 			);
 			path = Controlers;
 			sourceTree = "<group>";
@@ -191,9 +236,16 @@
 			files = (
 				00A5CC0A2782D70C007E478E /* ProfileVC.swift in Sources */,
 				004BFF54277C72B00057CD8C /* ViewController.swift in Sources */,
+				00BECF872784264200B4694E /* LoginVC.swift in Sources */,
+				00BECF932784274B00B4694E /* ProfileUserVC.swift in Sources */,
+				00BECF8B278426B900B4694E /* PhotoViewerVC.swift in Sources */,
+				00BECF912784271800B4694E /* NewConversationsVC.swift in Sources */,
 				004BFF50277C72B00057CD8C /* AppDelegate.swift in Sources */,
+				00BECF892784266400B4694E /* RegisterVC.swift in Sources */,
 				004BFF52277C72B00057CD8C /* SceneDelegate.swift in Sources */,
 				00D2B2DC277DCF41002C3ED4 /* SignUp.swift in Sources */,
+				00BECF8D278426D800B4694E /* VideoPlayerVC.swift in Sources */,
+				00BECF8F2784270500B4694E /* ConversationsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
