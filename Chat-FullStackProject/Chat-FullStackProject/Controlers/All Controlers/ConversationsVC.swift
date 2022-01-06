@@ -7,9 +7,12 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 
 class ConversationsVC: UIViewController {
+    
+    private let spiner = JGProgressHUD(style: .dark)
     
     private let tableView: UITableView = {
         let table = UITableView()

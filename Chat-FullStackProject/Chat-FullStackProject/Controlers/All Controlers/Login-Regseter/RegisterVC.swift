@@ -7,9 +7,12 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class RegisterVC: UIViewController {
 
+    private let spinner = JGProgressHUD(style: .dark)
+    
     @IBOutlet weak var firstNameTF: UITextField!
     @IBOutlet weak var lastNameTF: UITextField!
     @IBOutlet weak var agelTF: UITextField!
@@ -35,9 +38,15 @@ class RegisterVC: UIViewController {
                   return
               }
         
+        spinner.show(in: view)
         // firebase Register account
         DatabaseManger.shared.userExists(with: email, completion: { [weak self] exists in
             guard let strongSelf = self else { return }
+            
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss()
+            }
+            
             guard !exists else {
                 // user already exists
                 strongSelf.alertUserLoginError(message: "Look like a user account for thet E-Mail already exists.")
@@ -52,10 +61,30 @@ class RegisterVC: UIViewController {
                     return
                 }
                 
-                DatabaseManger.shared.insertUser(with: ChatAppUser(firstName: fname,
-                                                                   lastName: lname,
-                                                                   email: email,
-                                                                  age: age))
+                let chatUser = ChatAppUser(firstName: fname,
+                                          lastName: lname,
+                                          email: email,
+                                         age: age)
+                
+                DatabaseManger.shared.insertUser(with: chatUser,completion: {success in
+                    if success {
+                        // upload image
+                        guard let image = strongSelf.btnGallery.imageView?.image,
+                              let data = image.pngData() else {
+                            return
+                        }
+                        let fileName = chatUser.profilePictureFileName
+                        StrogeManger.sheard.uploadProfilePicture(with: data, fileName: fileName, completion: {result in
+                            switch result {
+                            case .success(let downloadUrl):
+                                UserDefaults.standard.set(email, forKey: "profile_picture_url")
+                                print(downloadUrl)
+                            case .failure(let error):
+                                print("Storge Maneger error: \(error)")
+                            }
+                        })
+                    }
+                })
                 strongSelf.navigationController?.dismiss(animated: true, completion: nil)
             })
             
@@ -100,36 +129,5 @@ extension RegisterVC : UIImagePickerControllerDelegate, UINavigationControllerDe
         dismiss(animated: true, completion: nil)
         print(image)
     }
-//    func sendImageToFireBaes(image: UIImage) {
-//        guard let data = image.jpegData(compressionQuality: 0.5) else { return }
-//
-//        let ref = Storage.storage().reference(withPath: "/profil_picks/\(self.emailTF.text!).jpeg")
-//        let userID = UUID().uuidString
-//
-//
-//        let uploadImage = ref.putData(data, metadata: nil) { _ , error in
-//            if let error = error {
-//                print(error)
-//            } else {
-//                print("Image Uploaded ")
-//            }
-//
-//            ref.downloadURL { imageURL, error in
-//                if let error = error {
-//                    print(error)
-//                } else {
-//                    print("Image URL: \(imageURL) ")
-//                    let name = self.nameTF.text
-//                    let age = self.ageTF.text
-//                    let email = self.emailTF.text
-//                    let pass = self.passTF.text
-//
-//                    if let name = name, let age = age , let email = email , let pass = pass {
-//                        self.createUser(name: name, age: age, email: email, pass: pass, imageURL: imageURL?.absoluteString)
-//                    }
-//                }
-//            }
-//        }
-//        uploadImage.resume()
-//    }
+
 }
