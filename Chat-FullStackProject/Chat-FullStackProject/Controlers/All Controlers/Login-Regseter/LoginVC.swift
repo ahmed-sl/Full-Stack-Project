@@ -47,7 +47,24 @@ class LoginVC: UIViewController {
             
             let user = result.user
             
+            let safeEmail = DatabaseManger.safeEmail(email: email)
+            
+            DatabaseManger.shared.getDataFor(path: safeEmail, completion: { result in
+                switch result {
+                case .success(let data):
+                    guard let userData = data as? [String: Any],
+                    let firsName = userData["first_name"] as? String,
+                    let lastName = userData["last_name"] as? String else {
+                        return
+                    }
+                    UserDefaults.standard.set("\(firsName) \(lastName)", forKey: "name")
+                case .failure(let error):
+                    print("failed to reed data with error : \(error)")
+                }
+            })
+            
             UserDefaults.standard.setValue(email, forKey: "email")
+           
             
             print("Logged in User : \(user)")
             strongSelf.navigationController?.dismiss(animated: true, completion: nil)

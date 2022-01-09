@@ -30,7 +30,7 @@ class ProfileUserVC: UIViewController {
         let path = "images/"+fileName
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.width , height: 300))
         
-        headerView.backgroundColor = .link
+        headerView.backgroundColor = .lightGray
         
         let imageview = UIImageView(frame: CGRect(x: (view.width-150) / 2 ,
                                                   y: 75,

@@ -66,6 +66,8 @@ class RegisterVC: UIViewController {
                                           email: email,
                                          age: age)
                 
+                
+                UserDefaults.standard.set("\(fname) \(lname)", forKey: "name")
                 DatabaseManger.shared.insertUser(with: chatUser,completion: {success in
                     if success {
                         // upload image
