@@ -23,9 +23,10 @@ final class DatabaseManger {
 }
 
 extension DatabaseManger {
-    public func getDataFor(path: String, completion: @escaping (Result<Any, Error>) -> Void){
+    public func getDataFor(path: String, completion: @escaping (Result<[String:Any], Error>) -> Void){
+        print(path,00)
         self.database.child("\(path)").observeSingleEvent(of: .value, with: { snapshot in
-            guard let vale = snapshot.value else {
+            guard let vale = snapshot.value as? [String:Any] else {
                 completion(.failure(DatabaseErrors.failedToFetched))
                 return
             }
@@ -317,6 +318,7 @@ extension DatabaseManger {
                     let conversations : [Converstion] = value.compactMap({
                         dictonary in
                         guard let id = dictonary["id"] as? String,
+                              let name = dictonary["name"] as? String,
                               let otherEmail = dictonary["other_user_email"] as? String,
                               let latestMessage = dictonary["latest_message"] as? [String:Any],
                               let isRead = latestMessage["is_read"] as? Bool,
@@ -327,7 +329,7 @@ extension DatabaseManger {
                         
                         let messageObj = LatesMessage(date: date, text: message, isRead: isRead)
                         
-                        return Converstion(id: id, otherUserEmail: otherEmail, letesMessage: messageObj)
+                        return Converstion(id: id, name:name, otherUserEmail: otherEmail, letesMessage: messageObj)
                         //(id: id, name: name, otherUserEmail: otherEmail, letesMessage: messageObj)
                     })
                     

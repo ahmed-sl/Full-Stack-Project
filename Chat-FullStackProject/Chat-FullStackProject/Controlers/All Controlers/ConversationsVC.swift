@@ -11,6 +11,7 @@ import JGProgressHUD
 
 struct Converstion {
     let id: String
+    let name:String
     let otherUserEmail: String
     let letesMessage: LatesMessage
 }
@@ -47,6 +48,11 @@ class ConversationsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let email = UserDefaults.standard.value(forKey: "email") as? String
+        let emnail = UserDefaults.standard.value(forKey: "name") as? String
+        
+       
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
                                                             target: self,
@@ -160,13 +166,13 @@ extension ConversationsVC : UITableViewDelegate, UITableViewDataSource {
         let model = conversations[indexPath.row]
         
         let vc = ChatVS(with: model.otherUserEmail, id: model.id)
-
+        vc.title = model.name
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 120
     }
     
     

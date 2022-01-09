@@ -1,9 +1,4 @@
-//
-//  ChatVS.swift
-//  Chat-FullStackProject
-//
-//  Created by Ahmed.sl on 02/06/1443 AH.
-//
+
 
 import UIKit
 import MessageKit
@@ -152,18 +147,6 @@ extension ChatVS: InputBarAccessoryViewDelegate {
                                kind: .text(text))
         // Send Message
         if isNewConversation {
-            // create convo in database
-            
-            /*
-             DatabaseManger.shared.creatNewConverstions(with: otherUserEmail, name: self.title ?? "User" , firstMessage: message, completion: { [weak self] success in
-                             if success {
-                                 print("Message send")
-                                 self?.isNewConversation = false
-                             }else {
-                                 print("faild to Send Message !!")
-                             }
-                         })
-             */
             DatabaseManger.shared.creatNewConverstions(with: otherUserEmail, name: self.title ?? "User", firstMessage: message, completion: { [weak self] success in
                 if success {
                     print("Message send")
@@ -191,7 +174,7 @@ extension ChatVS: InputBarAccessoryViewDelegate {
         }
     }
     private func createMessageId() -> String? {
-        // date, otherUesrEmail, senderEmail, randomInt
+       
         guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String else {
             return nil
         }
@@ -243,7 +226,7 @@ extension ChatVS: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDel
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         let sender = message.sender
         if sender.senderId == selfSender?.senderId {
-            // our message that we've sent
+            
             return .link
         }
 
