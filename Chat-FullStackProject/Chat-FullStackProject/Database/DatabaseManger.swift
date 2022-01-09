@@ -444,15 +444,77 @@ extension DatabaseManger {
                         completion(false)
                         return
                     }
+                    let updateValue : [String: Any] = [
+                        "date": dateString,
+                        "is_read": false,
+                        "message": message
+                    ]
                     
-                    for converstions in currentUserConverstion {
-                        if let currentId = converstions["id"] as? String, currentId == converstion {
-                            
+                    var targetConverstion : [String:Any]?
+                    
+                    var posstion = 0
+                    
+                    for converstionsDic in currentUserConverstion {
+                        if let currentId = converstionsDic["id"] as? String, currentId == converstion {
+                            targetConverstion = converstionsDic
+                            break
                         }
+                        
+                        posstion += 1
                     }
+                    
+                    targetConverstion?["latest_message"] = updateValue
+                    guard let finalConverstions = targetConverstion else {
+                        return
+                    }
+                    currentUserConverstion[posstion] = finalConverstions
+                    strongSelf.database.child("\(currentEmail)/converstions").setValue(currentUserConverstion, withCompletionBlock: { errpr, _ in
+                        guard error == nil else {
+                            completion(false)
+                            return
+                        }
+                        
+                        // update latest message for recipe user
+                        strongSelf.database.child("\(otherUserEmail)/converstions").observeSingleEvent(of: .value, with: { snapshot in
+                            guard var otherUserConverstion = snapshot.value as? [[String:Any]] else {
+                                completion(false)
+                                return
+                            }
+                            let updateValue : [String: Any] = [
+                                "date": dateString,
+                                "is_read": false,
+                                "message": message
+                            ]
+                            
+                            var targetConverstion : [String:Any]?
+                            
+                            var posstion = 0
+                            
+                            for converstionsDic in otherUserConverstion {
+                                if let currentId = converstionsDic["id"] as? String, currentId == converstion {
+                                    targetConverstion = converstionsDic
+                                    break
+                                }
+                                
+                                posstion += 1
+                            }
+                            
+                            targetConverstion?["latest_message"] = updateValue
+                            guard let finalConverstions = targetConverstion else {
+                                return
+                            }
+                            otherUserConverstion[posstion] = finalConverstions
+                            strongSelf.database.child("\(otherUserEmail)/converstions").setValue(otherUserConverstion, withCompletionBlock: { errpr, _ in
+                                guard error == nil else {
+                                    completion(false)
+                                    return
+                                }
+                                completion(true)
+                            })
+                        })
+                       
+                    })
                 })
-                
-                completion(true)
             })
         })
     }
